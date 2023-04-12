@@ -1,6 +1,5 @@
 package com.example.myapplication.datastructures.queue
 
-import com.example.myapplication.joinToString
 
 fun main() {
     val cq = CircularQueue<Int>(2)

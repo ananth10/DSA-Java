@@ -1,6 +1,7 @@
 package com.example.myapplication.datastructures.array.codingminutes.sortings
 
-import com.example.myapplication.max
+import kotlin.math.max
+
 
 fun main(){
     val width = 15

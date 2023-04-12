@@ -1,6 +1,5 @@
 package com.example.myapplication.datastructures.array.codingminutes.chars_strings
 
-import com.example.myapplication.max
 
 fun main(){
     val array = arrayOf("hi","bye","hello","ananthababu","welcome","cool")

@@ -1,6 +1,6 @@
 package com.example.myapplication.datastructures.array
 
-import com.example.myapplication.max
+
 import kotlin.math.abs
 
 fun main(){

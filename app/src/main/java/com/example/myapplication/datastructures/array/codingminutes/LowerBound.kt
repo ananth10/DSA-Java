@@ -1,6 +1,6 @@
 package com.example.myapplication.datastructures.array.codingminutes
 
-import com.example.myapplication.max
+
 
 fun main(){
     val array = intArrayOf(1, 2, 3, 4, 6,8,9)

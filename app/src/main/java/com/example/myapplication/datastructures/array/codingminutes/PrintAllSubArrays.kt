@@ -1,6 +1,5 @@
 package com.example.myapplication.datastructures.array.codingminutes
 
-import com.example.myapplication.joinToString
 import kotlin.math.max
 
 fun main() {
