@@ -43,17 +43,14 @@ public class BuildBinaryTree {
         return node;
     }
 
-    static BinaryNode buildTree() {
+    public static BinaryNode buildTree() {
         int d = scanner.nextInt();
         if (d == -1) {
             return null;
         }
         BinaryNode n = new BinaryNode(d);
         n.left = buildTree();
-        System.out.println("LEFT::" + n.data);
         n.right = buildTree();
-        System.out.println("RIG::" + n.data);
-        System.out.println("VAL::" + d);
         return n;
     }
 
