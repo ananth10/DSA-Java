@@ -81,7 +81,7 @@ public class BuildBinaryTree {
         System.out.print(root.data + ", ");
     }
 
-    static void printLevelOrder(BinaryNode node) {
+    public static void printLevelOrder(BinaryNode node) {
         Queue<BinaryNode> queue = new LinkedList<>();
         queue.add(node);
         queue.add(null);
