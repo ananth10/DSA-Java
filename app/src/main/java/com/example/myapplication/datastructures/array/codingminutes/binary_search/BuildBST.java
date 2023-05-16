@@ -22,7 +22,7 @@ public class BuildBST {
         printInOrder(root);
     }
 
-    static BinaryNode insert(BinaryNode root, int data) {
+   public static BinaryNode insert(BinaryNode root, int data) {
         //base case
         if (root == null) {
             return new BinaryNode(data);
@@ -36,7 +36,7 @@ public class BuildBST {
         return root;
     }
 
-    static void printInOrder(BinaryNode root) {
+  public static void printInOrder(BinaryNode root) {
         //base case
         if (root == null) {
             return;
