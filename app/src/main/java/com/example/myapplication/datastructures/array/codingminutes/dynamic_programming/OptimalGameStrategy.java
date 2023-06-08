@@ -2,7 +2,6 @@ package com.example.myapplication.datastructures.array.codingminutes.dynamic_pro
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class OptimalGameStrategy {
 
@@ -11,7 +10,9 @@ public class OptimalGameStrategy {
         int n = arr.length;
         HashMap<ArrayList<Integer>, Integer> map = new HashMap();
         int result = game(n, arr, 0, n - 1, map);
+        int result1 = game1(n, arr, 0, n - 1);
         System.out.println("RES:" + result);
+        System.out.println("RES:" + result1);
     }
 
     static int game(int n, int[] v, int s, int e, HashMap<ArrayList<Integer>, Integer> map) {
@@ -46,6 +47,18 @@ public class OptimalGameStrategy {
         map.put(k, Math.max(option1, option2));
         return map.get(k);
 
+    }
+
+  //simple approach
+    static int game1(int n, int[] v, int s, int e){
+        if(s==e || s==e-1){
+            return Math.max(v[s],v[e]);
+        }
+
+        int op1 = v[s] + Math.min(game1(n,v,s+2,e),game1(n,v,s+1,e-1));
+        int op2 = v[e] + Math.min(game1(n,v,s+1,e-1),game1(n,v,s,e-2));
+
+        return Math.max(op1,op2);
     }
 
 }
