@@ -1,12 +1,12 @@
-package com.example.myapplication.datastructures.array.codingminutes
+package com.example.myapplication.codingminutes.array
 
 import kotlin.math.abs
 
 fun main(){
     var array = intArrayOf(2,4,6,8)
     val x =7
-    val result =closetOfXPairSum(array,x)
-    val result1 =closetOfXPairSumUsingBinaryApproach(array,x)
+    val result = closetOfXPairSum(array,x)
+    val result1 = closetOfXPairSumUsingBinaryApproach(array,x)
     println("PAIR::{${result.first},${result.second}}")
     println("PAIR::{${result1.first},${result1.second}}")
 }

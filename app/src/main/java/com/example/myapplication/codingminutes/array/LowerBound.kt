@@ -1,4 +1,4 @@
-package com.example.myapplication.datastructures.array.codingminutes
+package com.example.myapplication.codingminutes.array
 
 
 
