@@ -17,6 +17,8 @@ public class Main {
 //        int value1 = list.deleteBack();
         int value3 = list.deleteAt(3);
         list.print();
+        System.out.println("SEARCH::"+list.search(300));
+        System.out.println("SEARCH::"+list.searchRecursively(list.getBegin(),30));
 
     }
 }

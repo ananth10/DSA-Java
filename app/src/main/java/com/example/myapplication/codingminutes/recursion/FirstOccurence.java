@@ -3,7 +3,7 @@ package com.example.myapplication.codingminutes.recursion;
 public class FirstOccurence {
 
     public static void main(String[] args) {
-        int arr[] = {7, 2, 5, 1, 9, 6, 14};
+        int arr[] = {1, 7, 5, 1, 9, 7, 17};
         int i = 0;
         int n = arr.length;
         int key = 7;
@@ -30,14 +30,8 @@ public class FirstOccurence {
         if (n == 0) {
             return -1;
         }
-        if(i==n-1){
-            if(arr[i]==key){
-                return 0;
-            }else{
-                return -1;
-            }
-        }
-        int subIndex = lastOccurence(arr, i + 1, n, key);
+        //recursive case
+        int subIndex = lastOccurence(arr, i + 1, n-1, key);
         if (subIndex == -1) {
             if (arr[i] == key) {
                 return 0;

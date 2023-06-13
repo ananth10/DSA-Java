@@ -9,18 +9,18 @@ public class LinkedList<T> {
         this.tail = null;
     }
 
-    public Node getBegin(){
+    public Node getBegin() {
         return head;
     }
 
     //add element in the front
 
-    public void addFront(T data){
+    public void addFront(T data) {
         Node<T> node = new Node<>(data);
-        if(head==null){
-            head=tail=node;
-            node.next=null;
-        }else{
+        if (head == null) {
+            head = tail = node;
+            node.next = null;
+        } else {
             node.next = head;
             head = node;
         }
@@ -28,30 +28,30 @@ public class LinkedList<T> {
 
     //add element in the back
 
-    public void addBack(T data){
+    public void addBack(T data) {
         Node<T> node = new Node<>(data);
-        if(tail==null){
-            head=tail=node;
-            node.next=null;
-        }else{
+        if (tail == null) {
+            head = tail = node;
+            node.next = null;
+        } else {
             tail.next = node;
             tail = node;
         }
     }
 
     //insert element in the middle
-    public void insert(T data, int pos){
-        if(pos==0){
+    public void insert(T data, int pos) {
+        if (pos == 0) {
             addFront(data);
             return;
         }
-        if(pos>=getSize()-1){
+        if (pos >= getSize() - 1) {
             addBack(data);
             return;
         }
         Node<T> node = new Node<>(data);
         Node currentNode = head;
-        for (int i=1;i<pos;i++){
+        for (int i = 1; i < pos; i++) {
             currentNode = currentNode.next;
         }
         node.next = currentNode.next;
@@ -60,8 +60,8 @@ public class LinkedList<T> {
     }
 
     //delete element in the front
-    public int deleteFront(){
-        if(head==null){
+    public int deleteFront() {
+        if (head == null) {
             return -1;
         }
         int deleted = (int) head.data;
@@ -70,13 +70,13 @@ public class LinkedList<T> {
     }
 
     //delete element in the back
-    public int deleteBack(){
-        if(head==null){
+    public int deleteBack() {
+        if (head == null) {
             return -1;
         }
         Node currentNode = head;
         Node prevNode = head;
-        while (currentNode.next!=null){
+        while (currentNode.next != null) {
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -87,16 +87,16 @@ public class LinkedList<T> {
         return deleted;
     }
 
-    public int deleteAt(int pos){
-        if(pos==0){
+    public int deleteAt(int pos) {
+        if (pos == 0) {
             return deleteFront();
         }
-        if(pos>getSize()){
+        if (pos > getSize()) {
             return -1;
         }
         Node currentNode = head;
         Node prevNode = head;
-        for(int i=1;i<=pos;i++){
+        for (int i = 1; i <= pos; i++) {
             prevNode = currentNode;
             currentNode = currentNode.next;
         }
@@ -106,11 +106,11 @@ public class LinkedList<T> {
     }
 
 
-  //get the total node
-    public int getSize(){
+    //get the total node
+    public int getSize() {
         int count = 0;
         Node currentNode = head;
-        while (currentNode!=null){
+        while (currentNode != null) {
             count++;
             currentNode = currentNode.next;
         }
@@ -118,15 +118,42 @@ public class LinkedList<T> {
     }
 
     //print all elements from the linked list
-    public void print(){
+    public void print() {
 //        System.out.print("head"+head);
         System.out.print("[");
         Node currentNode = head;
-        while (currentNode!=null){
-            System.out.print(currentNode.data+", ");
+        while (currentNode != null) {
+            System.out.print(currentNode.data + ", ");
             currentNode = currentNode.next;
         }
         System.out.print("]");
+    }
+
+    public boolean search(int key) {
+        if (head == null) {
+            return false;
+        }
+        Node currentNode = head;
+        while (currentNode != null) {
+            if (currentNode.data == (Integer) key) {
+                return true;
+            }
+            currentNode = currentNode.next;
+        }
+        return false;
+    }
+
+    public boolean searchRecursively(Node head, int key) {
+        //base case
+        if (head == null) {
+            return false;
+        }
+        //recursive case
+        if (head.data == (Integer) key) {
+            return true;
+        } else {
+            return searchRecursively(head.next, key);
+        }
     }
 
     @Override
