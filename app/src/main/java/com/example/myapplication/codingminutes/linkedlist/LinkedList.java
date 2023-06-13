@@ -156,6 +156,26 @@ public class LinkedList<T> {
         }
     }
 
+
+    public void reverse(){
+        Node current = head;
+        if(current==null)
+            return;
+        Node prev = null;
+        tail = current;
+        while (current!=null){
+            //save the next node
+            Node nextNode = current.next;
+            //current node should point to prev
+            current.next = prev;
+
+            //then prev became current node
+            prev = current;
+            //then current node became next node
+            current = nextNode;
+        }
+        head = prev;
+    }
     @Override
     public String toString() {
         return "LinkedList{" +
