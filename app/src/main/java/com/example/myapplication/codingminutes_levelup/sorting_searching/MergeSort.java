@@ -1,18 +1,14 @@
-package com.example.myapplication.codingminutes.divide_conquer;
+package com.example.myapplication.codingminutes_levelup.sorting_searching;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class MergeSort {
-
     public static void main(String[] args) {
-        int[] arr = {4, 5, 2, 1, 9, 7, 8};
-        int start = 0;
-        int end = arr.length-1;
-        mergeSort(arr, start, end);
-        System.out.println(Arrays.toString(arr));
-
+        int[] a = {5, 3, 6, 1, 7, 4, 9, 18, 11};
+        mergeSort(a, 0, a.length - 1);
+        System.out.println("Result: "+ Arrays.toString(a));
     }
 
     static void mergeSort(int[] arr, int s, int e) {
@@ -30,9 +26,10 @@ public class MergeSort {
     static int[] merge(int[] arr, int s, int e) {
         int i = s;
         int mid = (s + e) / 2;
-        int j = mid + 1;
+        int j = mid+1;
         List<Integer> list = new ArrayList<>();
-        while (i <= mid && j<=e) {
+
+        while (i <= mid && j <= e) {
             if (arr[i] < arr[j]) {
                 list.add(arr[i]);
                 i++;
@@ -41,20 +38,22 @@ public class MergeSort {
                 j++;
             }
         }
-
-        //copy remaining element from left array add to list
+        //if any elements left in the left array, add it to list
         while (i <= mid) {
             list.add(arr[i++]);
         }
-        //copy remaining element from right array add to list
+
+        //if any elements left in the right array, add it to list
         while (j <= e) {
             list.add(arr[j++]);
         }
-        //move all elements into original array
-        int k = 0;
-        for (int m = s; m<=e; m++) {
-            arr[m] = list.get(k++);
+
+        int m = 0;
+        //move all element to original array
+        for (int k = s; k <= e; k++) {
+            arr[k] = list.get(m++);
         }
+
         return arr;
     }
 }
