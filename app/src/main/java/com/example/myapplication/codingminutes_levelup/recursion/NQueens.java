@@ -21,6 +21,7 @@ public class NQueens {
         Arrays.fill(board[0], 0);
         int n = board.length;
         solveNQueens(board, n, 0);
+        findAllWaysNQueens(board,n,0);
     }
 
     static boolean solveNQueens(int[][] board, int n, int row) {
@@ -37,6 +38,7 @@ public class NQueens {
                 board[row][col] = 1;
                 boolean isSuccess = solveNQueens(board, n, row + 1);
                 if (isSuccess) {
+                    count++;
                     return true;
                 }
                 //remove the queen
@@ -85,6 +87,28 @@ public class NQueens {
                 System.out.print(board[i][j] + " ");
             }
             System.out.println();
+        }
+    }
+
+    //find number of ways can place n queens
+    public static int count = 0;
+    static void findAllWaysNQueens(int[][] board, int n, int row) {
+        //base case
+        if (row == n) {
+            count++;
+            System.out.println("Result: "+count);
+            return;
+        }
+
+        //recursive case
+        for (int col = 0; col < n; col++) {
+            //place the queen
+            if (canPlaceQueen(board, n, row, col)) {
+                board[row][col] = 1;
+                findAllWaysNQueens(board, n, row + 1);
+                //remove the queen
+                board[row][col] = 0;
+            }
         }
     }
 }
