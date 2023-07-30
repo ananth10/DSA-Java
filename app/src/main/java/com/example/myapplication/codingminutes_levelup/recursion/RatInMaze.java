@@ -45,18 +45,16 @@ public class RatInMaze {
 
     public static void main(String[] args) {
         int n = 4;
-        int gridSize = n * n;
         char[][] matrix = {
+                {'0', '0', 'X', '0'},
                 {'0', 'X', '0', '0'},
                 {'0', '0', '0', 'X'},
-                {'X', '0', 'X', '0'},
-                {'X', '0', '0', 'X'},
                 {'X', 'X', '0', '0'}
         };
         List<Integer> result = new ArrayList<>();
         result.add(1);
-        ratInMaze(matrix, result, n-1, 0, 0);
-        Collections.reverse(result);
+        ratInMaze(matrix, result, n - 1, 0, 0);
+        Collections.sort(result);
         System.out.println("Result: " + result);
     }
 
