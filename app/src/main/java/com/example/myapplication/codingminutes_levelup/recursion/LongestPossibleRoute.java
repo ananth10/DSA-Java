@@ -61,8 +61,6 @@ public class LongestPossibleRoute {
     static int longestPossibleRoute(int[][] matrix, boolean[][] visited, int m, int n, int row, int col, int longestPath, int currentLength) {
         //base case
         if (row == m && col == n) {
-            System.out.println("REACHED::" + currentLength);
-            System.out.println("REACHED longestPath::" + longestPath);
             return Math.max(longestPath, currentLength);
         }
         //recursive case
@@ -77,7 +75,6 @@ public class LongestPossibleRoute {
         if (row < m && !visited[row + 1][col] && matrix[row + 1][col] == 1) {
             currentLength += 1;
             visited[row + 1][col] = true;
-            System.out.println("PATH::" + currentLength);
             longestPath = longestPossibleRoute(matrix, visited, m, n, row + 1, col, longestPath, currentLength);
         }
         //move left
