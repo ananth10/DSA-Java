@@ -1,6 +1,5 @@
 package com.example.myapplication.codingminutes_levelup.linkedlist;
 
-import kotlin.jvm.Throws;
 
 public class MyLinkedList<T> {
     private Node<T> head;
@@ -139,16 +138,4 @@ public class MyLinkedList<T> {
         head = node;
     }
 
-    //reverse linked list using recursion
-    Node<T> recurseReverse(Node<T> head) {
-        //base case
-        if (head == null || head.next == null) {
-            return head;
-        }
-        //recursive case
-        Node<T> smallHead = recurseReverse(head.next);
-        head.next.next = head;
-        head.next = null;
-        return smallHead;
-    }
 }

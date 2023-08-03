@@ -21,7 +21,6 @@ public class Client {
         System.out.println("AFTER DELETE");
         list.insertAtHead(5);
         list.printList();
-        list.recurseReverse(list.getHead());
         list.printList();
     }
 }
