@@ -24,9 +24,9 @@ public class IterativeReverseLinkedList {
             tempNode = currentNode.next;
             //then current node next point to prevNode
             currentNode.next = prevNode;
-            //then current node becomes prevNode
+            //then prevNode became current node
             prevNode = currentNode;
-            //then current.next node becomes current node
+            //then tempNode became current node
             currentNode = tempNode;
         }
         head = prevNode;//finally last node point to head

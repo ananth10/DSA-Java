@@ -34,12 +34,12 @@ public class MyLinkedList<T> {
     }
 
     void printList() {
-        System.out.println();
         Node<T> currentNode = head;
         while (currentNode != null) {
             System.out.print(currentNode.data + ",");
             currentNode = currentNode.next;
         }
+        System.out.println();
     }
 
     synchronized Node<T> search(T value) {
