@@ -132,6 +132,7 @@ public class MyLinkedList<T> {
     void insertAtHead(T value) {
         if (head == null) {
             head = new Node<>(value);
+            return;
         }
         Node<T> node = new Node<>(value);
         node.next = head;
