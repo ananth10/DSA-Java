@@ -18,8 +18,8 @@ import java.util.Scanner;
  * 2    3
  * / \     \
  * 4   5      6
- * /
- * 7
+ *    /
+ *   7
  */
 public class LevelOrderBuilder {
     public static void main(String[] args) {
