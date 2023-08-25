@@ -83,7 +83,7 @@ public class BSTtoLL {
         }}
 
 
-    class Node {
+    private class Node {
 
         int value;
         Node left;
