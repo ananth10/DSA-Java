@@ -4,42 +4,35 @@ import android.annotation.SuppressLint;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.Vector;
-
-import kotlin.Pair;
 
 /**
  * Count Rectangle
  * ---------------
- * Given N cartesian points in a 2D plane, find the number of axis parallel
- * rectangle that can be formed.
+ * Given N cartesian points in a 2D plane, find the number of triangle such that
+ * the base or perpendicular is parallel to the X or Y axis.
+ *
  * INPUT:
- * N = 8;
- * points = [{0,0},{0,1},{1,1},{1,0},{2,1},{2,0},{3,1},{3,0}]
+ * N = 5;
+ * points = [{1,2},{2,0},{2,2},{2,3},{4,2}]
  * <p>
  * OUTPUT:
  * 6
  */
-public class CountRectangle {
+public class CountTriangle {
     public static void main(String[] args) {
         List<Point> list = new ArrayList<>();
-        list.add(new Point(0, 0));
-        list.add(new Point(0, 1));
-        list.add(new Point(1, 1));
-        list.add(new Point(1, 0));
-        list.add(new Point(2, 1));
-        list.add(new Point(2, 0));
-        list.add(new Point(3, 1));
-        list.add(new Point(3, 0));
+        list.add(new Point(1,2));
+        list.add(new Point(2,0));
+        list.add(new Point(2,2));
+        list.add(new Point(2,3));
+        list.add(new Point(4,2));
 
-        int count = countRectangle(list);
+        int count = countTriangle(list);
         System.out.println("Result: " + count);
     }
     @SuppressLint("NewApi")
-    private static int countRectangle(List<Point> list) {
+    private static int countTriangle(List<Point> list) {
         int answer = 0;
         HashMap<Integer, Integer> xFreq = new HashMap<>();
         HashMap<Integer, Integer> yFreq = new HashMap<>();
