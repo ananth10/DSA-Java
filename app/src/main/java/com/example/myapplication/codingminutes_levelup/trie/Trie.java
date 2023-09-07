@@ -43,4 +43,10 @@ public class Trie {
         return temp != null && temp.isTerminalNode;
     }
 
+    @Override
+    public String toString() {
+        return "Trie{" +
+                "root=" + root +
+                '}';
+    }
 }
