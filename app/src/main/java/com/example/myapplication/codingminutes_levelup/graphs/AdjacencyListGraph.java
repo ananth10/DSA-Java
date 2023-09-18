@@ -27,9 +27,16 @@ public class AdjacencyListGraph {
         adjacencyListGraph.addEdgeWithWeight(0, 3, 7, false);
         adjacencyListGraph.addEdgeWithWeight(3, 2, 2, false);
         adjacencyListGraph.addEdgeWithWeight(3, 4, 3, false);
-//        printWeightGraph();
+        printWeightGraph();
 
+        System.out.println("BFS");
         bfs(1);
+        System.out.println("**********************");
+        System.out.println("DFS");
+        dfs(1);
+        System.out.println("**********************");
+        System.out.println("Shortest path");
+        shortestPath(1,5);
     }
 
     static List<List<Integer>> list;
@@ -101,6 +108,60 @@ public class AdjacencyListGraph {
                 }
             }
 
+        }
+    }
+
+    static void dfs(int src){
+       boolean[] visited = new boolean[v];
+       dfsHelper(src,visited);
+    }
+
+    static void dfsHelper(int src,boolean[] visited){
+        visited[src] = true;
+        System.out.print(src+", ");
+        for(int nbr:list.get(src)){
+            if(!visited[nbr]) {
+                dfsHelper(nbr, visited);
+            }
+        }
+    }
+    static void shortestPath(int src, int dest) {
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] visited = new boolean[v];
+        int[] distance = new int[v];
+        int[] parent = new int[v];
+
+        //add src to queue
+        q.add(src);
+        visited[src] = true;
+        distance[src] = 0;
+        parent[src] = src;
+
+        while (!q.isEmpty()) {
+            int top = q.poll();
+            List<Integer> nbrs = list.get(top);
+
+            for (int nbr : nbrs) {
+                if (!visited[nbr]) {
+                    visited[nbr] = true;
+                    q.add(nbr);
+                    distance[nbr] = distance[top] + 1;
+                    parent[nbr] = top;
+                }
+            }
+        }
+
+        for (int i = 0; i < v; i++) {
+            System.out.println("Shortest distance of " + i + " is " + distance[i]);
+        }
+
+        if (dest != -1) {
+            int temp = dest;
+            while (temp != src) {
+                System.out.print(temp + "--");
+                temp = parent[temp];
+            }
+            System.out.print(src);
         }
     }
 }
