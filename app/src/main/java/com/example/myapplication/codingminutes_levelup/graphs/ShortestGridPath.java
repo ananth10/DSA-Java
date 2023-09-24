@@ -41,11 +41,9 @@ public class ShortestGridPath {
 
     public static void main(String[] args) {
         int[][] path = {
-                {31, 100, 64, 12, 18},
-                {10, 13, 47, 157, 6},
-                {100, 113, 174, 11, 33},
-                {88, 124, 41, 20, 140},
-                {99, 32, 111, 41, 20},
+                {31, 100, 65, 12},
+                {10, 13, 4, 157},
+                {20, 30, 40, 50},
         };
 
         int minCost = shortestGridPath(path);
