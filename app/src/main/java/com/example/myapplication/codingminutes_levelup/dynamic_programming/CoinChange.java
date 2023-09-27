@@ -19,7 +19,12 @@ public class CoinChange {
         int amount = 15;
 
         int result = minCoins(coins, amount);
+
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
+        int result1 = minCoinsTopDown(coins, amount, dp);
         System.out.println("Result:" + result);
+        System.out.println("TopDown Result:" + result1);
     }
 
     //Bottom up approach
@@ -41,5 +46,24 @@ public class CoinChange {
         }
 
         return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount]; //if we cannot use given coins then return -1 otherwise return min of coins required to make the given amount
+    }
+
+    //TopDown approach
+    private static int minCoinsTopDown(int[] coins, int amount, int[] dp) {
+        //base case
+        if (amount == 0) {
+            return 0;
+        }
+        if (dp[amount] != Integer.MAX_VALUE) {
+            return dp[amount];
+        }
+
+        for (int i = 0; i < coins.length; i++) {
+            if (amount - coins[i] >= 0) {
+                dp[amount] = Math.min(minCoinsTopDown(coins, amount - coins[i], dp) + 1, dp[amount]);
+            }
+        }
+
+        return dp[amount];
     }
 }
