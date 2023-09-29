@@ -22,8 +22,8 @@ public class MinArrayJump {
         int jumps = minJumpsTopDown(arr, n, dp, 0);
         System.out.println("TopDown Result:" + jumps);
 
-//        int jumps1 = minJumpBottomUp(arr, n);
-//        System.out.println("BottomUp Result:" + jumps1);
+        int jumps1 = minJumpBottomUp(arr, n);
+        System.out.println("BottomUp Result:" + jumps1);
     }
 
     //TopDown approach
@@ -54,26 +54,26 @@ public class MinArrayJump {
 
     //BottomUp Approach
 
-//    private static int minJumpBottomUp(int[] arr, int n) {
-//
-//        if(n==0 || arr[0]==0){
-//            return -1;
-//        }
-//        int[] dp = new int[n];
-//        Arrays.fill(dp, 0);
-//
-//        dp[0] = 0; //there is no need to jump when single element in the array.
-//
-//        for (int i = 0; i < n; i++) {
-//            int currentMaxJump = arr[i];
-//            int minJump = Integer.MAX_VALUE;
-//            for (int j = 1; j <= currentMaxJump; j++) {
-//                int nextJump = i + j; //j jump from the current position
-//
-//            }
-//            dp[i] = minJump;
-//        }
-//        System.out.println(Arrays.toString(dp));
-//        return dp[n - 1];
-//    }
+    private static int minJumpBottomUp(int[] arr, int n) {
+
+        if (n == 0 || arr[0] == 0) {
+            return -1;
+        }
+        int[] dp = new int[n]; //this array used to store minimum jump from took to reach end at every index.
+        Arrays.fill(dp, 0);
+
+        dp[0] = 0; //there is no need to jump when single element in the array.
+
+        for (int i = 1; i < n; i++) {
+            dp[i] = Integer.MAX_VALUE; //assume to reach ith index it need max jump
+            for (int j = 0; j < i; j++) { //need to find min jump between 0 to current ith index
+                if (i <= j + arr[j] && dp[j] != Integer.MAX_VALUE) { //if able to reach current index from any previous index and if we stored min of for previous index then
+                    dp[i] = Math.min(dp[i], dp[j] + 1); //check min jump between currently saved count with every index + current index
+                    break;
+                }
+            }
+        }
+
+        return dp[n - 1];
+    }
 }
