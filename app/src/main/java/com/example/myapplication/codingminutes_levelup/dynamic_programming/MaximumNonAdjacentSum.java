@@ -47,11 +47,20 @@ public class MaximumNonAdjacentSum {
     }
 
     private static int maxSumBottomUp(int[] arr, int n) {
+
+        //corner case
+        if (n == 1) {
+            return Math.max(arr[0], 0);
+        }
+        if (n == 2) {
+            return Math.max(arr[0], arr[1]);
+        }
         int[] dp = new int[n];
         Arrays.fill(dp, 0);
 
-        dp[0] = arr[0];
-        dp[1] = arr[1];
+
+        dp[0] = Math.max(arr[0],0);//select max so we can set max sum
+        dp[1] = Math.max(0,Math.max(arr[0],arr[1]));//select max so we can set max sum
 
         for (int i = 2; i < n; i++) {
             int option1 = dp[i - 1];
