@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class MinArrayJump {
 
     public static void main(String[] args) {
-        int[] arr = {3, 4, 2, 1, 2, 3, 7, 1, 1, 1, 2, 5};
+        int[] arr = {2,3,1,1,4};
         int n = arr.length;
 
         int[] dp = new int[n - 1];
@@ -74,6 +74,7 @@ public class MinArrayJump {
             }
         }
 
+        System.out.println(Arrays.toString(dp));
         return dp[n - 1];
     }
 }
