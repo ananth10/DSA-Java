@@ -46,9 +46,13 @@ public class EditDistance {
         }
 
         int operations = editOperation(s1, s2, n1, n2, dp);
-        System.out.println("TEST:" + operations);
+        System.out.println("Topdown Result:" + operations);
+
+        int operation = minOperation(s1, s2, n1, n2);
+        System.out.println("Bottomup TEST:" + operation);
     }
 
+    //TopDown approach
     private static int editOperation(String s1, String s2, int n1, int n2, int[][] dp) {
 
         //base case
@@ -75,5 +79,30 @@ public class EditDistance {
         }
 
         return dp[n1][n2];
+    }
+
+    //Bottom Approach
+    private static int minOperation(String s1, String s2, int m, int n) {
+        int[][] dp = new int[m + 1][n + 1];
+        for (int[] row : dp) {
+            Arrays.fill(row, 0);
+        }
+
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
+                if (i == 0) {
+                    dp[i][j] = j;
+                } else if (j == 0) {
+                    dp[i][j] = i;
+                } else if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else {
+                    int min = Math.min(dp[i][j - 1], Math.min(dp[i - 1][j], dp[i - 1][j - 1])) + 1; //1 current operation and min of (insert,remove,replace)
+                    dp[i][j] = min;
+                }
+            }
+        }
+
+        return dp[m][n];
     }
 }
