@@ -5,7 +5,8 @@ public class RotateImage {
     public static void main(String[] args) {
 //        rotateImageClockwise();
 //        rotateImageAntiClockWise();
-        rotate();
+//        rotate();
+        rotate1();
     }
 
 
@@ -130,4 +131,38 @@ public class RotateImage {
         }
     }
 
+    static void rotate1(){
+        int[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        int n = matrix.length;
+        int l = 0;
+        int r = n-1;
+
+        while (l<r){
+            for (int i = 0; i < (r - l); i++) {
+
+                //store top left in temp variable
+               int topLeft = matrix[l][l+i];
+
+               //move bottom left to top left
+                matrix[l][l+i] = matrix[r -i][l];
+
+                //move bottom right into bottom left
+                matrix[r -i][l] = matrix[r][r-i];
+
+                //move top right into bottom right
+                matrix[r][r-i] = matrix[l +i][r];
+
+                //move top left into top right
+                matrix[l +i][r] = topLeft;
+            }
+            l++;
+            r--;
+        }
+
+        printMatrix(matrix);
+    }
 }
