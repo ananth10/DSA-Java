@@ -4,7 +4,12 @@ import java.util.Arrays;
 
 /**
  * Game of Wits
- * Oswald and Henry are playing a game with alternating turns. Oswald plays first. The game starts with all game cards arranged in a single row. The cards are of two types 'O' and 'H'. During Oswald's turns, he must choose and remove an 'O' card that is either the leftmost or rightmost card remaining. During Henry's turns, he must choose and remove an 'H' card that is either the leftmost or rightmost card remaining. If at any point one of the players does not have a legal move (possibly because there are no cards remaining), that player loses the game, and the other player is awarded 1 point plus 1 additional point for each card that remains on the board.
+ * Oswald and Henry are playing a game with alternating turns. Oswald plays first. The game starts with all game cards arranged in a single row.
+ * The cards are of two types 'O' and 'H'.
+ * During Oswald's turns, he must choose and remove an 'O' card that is either the leftmost or rightmost card remaining.
+ * During Henry's turns, he must choose and remove an 'H' card that is either the leftmost or rightmost card remaining.
+ * If at any point one of the players does not have a legal move (possibly because there are no cards remaining),
+ * that player loses the game, and the other player is awarded 1 point plus 1 additional point for each card that remains on the board.
  * For example, initial row was OHOHHHOO.
  * On his first turn, Oswald can choose to remove either the leftmost or rightmost cards, as both are type 'O'. Suppose he chooses the leftmost (this may not be smart move). Then, the board would become HOHHHOO. Then, Henry would have no choice but to remove the new leftmost card, as the rightmost card is not H, leaving OHHHOO. Oswald can choose again, and this time he chooses the rightmost piece, leaving OHHHO for Henry's turn. At this point, Henry has no valid move, so Oswald won. Since there are 5 pieces remaining, Oswald wins 1+5=6 points in total.
  * Each player plays optimally trying to win and to maximize their own score. A player that cannot guarantee a win plays to minimize the opponent's score. Given the starting board, can you find out who wins and what is their score?
