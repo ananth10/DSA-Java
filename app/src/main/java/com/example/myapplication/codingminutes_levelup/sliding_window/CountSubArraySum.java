@@ -35,7 +35,7 @@ public class CountSubArraySum {
             if (map.containsKey(currentSum - k)) {
                 count += map.get(currentSum - k);
             }
-            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);//If the same sum occurs again. we increment the count corresponding to that sum in the hashmap.
+            map.put(currentSum, map.getOrDefault(arr[i], 0) + 1);//If the same sum occurs again. we increment the count corresponding to that sum in the hashmap.
         }
         return count;
     }
