@@ -8,9 +8,10 @@ public class AlphaCode {
 
     public static void main(String[] arg) {
         int[] dp = new int[input.length()];
-        Arrays.fill(dp,-1);
+        Arrays.fill(dp, -1);
         int result = alphaCodeTopDown(0, dp);
         System.out.println("TopDown Result: " + result);
+        System.out.println("BottomUp Result: " + alphaCodeBottomUp());
     }
 
 
@@ -36,5 +37,28 @@ public class AlphaCode {
         }
 
         return dp[index] = ans;
+    }
+
+    private static int alphaCodeBottomUp() {
+        int[] dp = new int[input.length()+1];
+        Arrays.fill(dp, -1);
+        dp[input.length()] = 1;
+
+        for (int i = input.length() - 1; i >= 0; i--) {
+           int ans = 0;
+
+            if (input.charAt(i) >= '1' && input.charAt(i) <= '9') {
+                ans += dp[i+1];
+            }
+            if (i + 1 < input.length() && input.charAt(i) == '1') {
+                ans += dp[i+2];
+            }
+            if (i + 1 < input.length() && input.charAt(i) == '2' && input.charAt(i + 1) <= '6') {
+                ans += dp[i+2];
+            }
+            dp[i] = ans;
+        }
+
+        return dp[0];
     }
 }
