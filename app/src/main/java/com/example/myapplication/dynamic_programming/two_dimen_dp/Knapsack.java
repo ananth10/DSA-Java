@@ -30,6 +30,10 @@ public class Knapsack {
 
         int maxValues4 = knapSackBottomUpMemoryOptOneRow(s, v, values, wts);
         System.out.println("BottomUp Memory Opt with single row Result:" + maxValues4);
+
+        int maxValues5 = knapSackZeroN(s,v,values,wts);
+        System.out.println("0/N Knap Result:" + maxValues5);
+
     }
 
     //recursive approach
@@ -141,6 +145,23 @@ public class Knapsack {
 
             for (int w = s; w >= weights[idx - 1]; w--) {
                 dp[w] = Math.max(dp[w], values[idx - 1] + dp[w - weights[idx - 1]]);
+            }
+        }
+        return dp[s];
+    }
+
+    //0/N KnapSack
+    private static int knapSackZeroN(int s, int index, int[] values, int[] weights) {
+        int[] dp = new int[s + 1];
+        Arrays.fill(dp, 0);
+
+
+        for (int idx = 1; idx <= index; idx++) {
+
+            for (int w = 0; w<=s; w++) {
+                if(w>=weights[idx-1]){
+                    dp[w] = Math.max(dp[w],dp[w-weights[idx-1]]+values[idx-1]);
+                }
             }
         }
         return dp[s];
