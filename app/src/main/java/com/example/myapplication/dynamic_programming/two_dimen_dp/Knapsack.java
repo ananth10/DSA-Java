@@ -27,6 +27,9 @@ public class Knapsack {
 
         int maxValues3 = knapSackBottomUpMemoryOpt(s, v, values, wts);
         System.out.println("BottomUp Memory Opt Result:" + maxValues3);
+
+        int maxValues4 = knapSackBottomUpMemoryOptOneRow(s, v, values, wts);
+        System.out.println("BottomUp Memory Opt with single row Result:" + maxValues4);
     }
 
     //recursive approach
@@ -129,32 +132,17 @@ public class Knapsack {
 
     //Memory optimization using 1 row
 
-//    private static int knapSackBottomUpMemoryOptOneRow(int s, int index, int[] values, int[] weights) {
-//        int[] dp = new int[s + 1];
-//        Arrays.fill(dp, 0);
-//
-//
-//        for (int idx = 1; idx <= index; idx++) {
-//
-//            for (int w = 1; w <= s; w++) {
-//                int include = 0;
-//                if (weights[idx - 1] <= w) {
-//                    include = values[idx - 1] + dp[0][w - weights[idx - 1]];
-//                }
-//                int exclude = dp[0][w];
-//
-//                dp[1][w] = Math.max(include, exclude);
-//            }
-//
-//            for (int i = 0; i <= s; i++) {
-//                dp[0][i] = dp[1][i];
-//            }
-//
-//        }
-//
-//        for (int[] row : dp) {
-//            System.out.println(Arrays.toString(row));
-//        }
-//        return dp[1][s];
-//    }
+    private static int knapSackBottomUpMemoryOptOneRow(int s, int index, int[] values, int[] weights) {
+        int[] dp = new int[s + 1];
+        Arrays.fill(dp, 0);
+
+
+        for (int idx = 1; idx <= index; idx++) {
+
+            for (int w = s; w >= weights[idx - 1]; w--) {
+                dp[w] = Math.max(dp[w], values[idx - 1] + dp[w - weights[idx - 1]]);
+            }
+        }
+        return dp[s];
+    }
 }
