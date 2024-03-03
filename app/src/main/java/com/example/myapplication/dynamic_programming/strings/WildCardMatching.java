@@ -17,6 +17,7 @@ public class WildCardMatching {
 
         System.out.println("Result TopDown :" + (result == 1));
 
+
         int result1 = wildMatchBtmUp();
         System.out.println("Result BottomUp :" + (result1 == 1));
     }
@@ -54,20 +55,18 @@ public class WildCardMatching {
     //bottom up
     static int wildMatchBtmUp() {
         int[][] dp = new int[s.length() + 1][p.length() + 1];
-        for (int[] row : dp) {
-            Arrays.fill(row, 0);
-        }
+
         boolean makeAll = false;
         //base case
         dp[0][0] = 1; //both string and pattern are empty
 
         //if pattern is empty
-        for (int i = 0; i <= s.length(); i++) {
+        for (int i = 1; i <= s.length(); i++) {
             dp[i][0] = 0;
         }
         //if string is empty
-        for (int k = 0; k < p.length(); k++) {
-            if (p.charAt(0) == '*') {
+        for (int k = 1; k < p.length(); k++) {
+            if (k == 1 && p.charAt(0) == '*') {
                 dp[0][k] = 1;
                 makeAll = true;
             } else {
@@ -77,8 +76,8 @@ public class WildCardMatching {
             }
         }
 
-        for (int i = 1; i < s.length(); i++) {
-            for (int j = 1; j < p.length(); j++) {
+        for (int i = 1; i <= s.length(); i++) {
+            for (int j = 1; j <= p.length(); j++) {
 
                 if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') {
                     dp[i][j] = dp[i - 1][j - 1];
@@ -87,7 +86,6 @@ public class WildCardMatching {
                 }
             }
         }
-
         return dp[s.length()][p.length()];
     }
 }
